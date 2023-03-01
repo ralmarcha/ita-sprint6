@@ -1,13 +1,16 @@
 import './App.css';
 import React from 'react';
 import Escena from './components/Escena/Escena';
+import { Back} from './components/Background';
 import { data } from './components/data';
 import { Button } from './components/Button';
 import { useState } from 'react';
 
+
 function App() {
   const [position, setPosition] = useState(1);
-
+  
+  
   const previous = () => { 
     if (position <= data.length) {
       setPosition(position - 1);
@@ -24,16 +27,23 @@ function App() {
     if (position >= data.length) {
         setPosition(1);
     }
-  }
+  } 
 
   return (
-    <div>
+    <Back background={data[position-1].img}>
+      <div>
       <Button onClick={previous}> Anterior </Button>
       <Button onClick={next}> Següent </Button>
-      {data.map((element) => (<Escena  key={element.id} id={element.id} image={element.img} text={element.text} position={position}
+      </div>
+    
+      {data.map((element) => (<Escena key={element.id} id={element.id} image={element.img} text={element.text} position={position}
       />))}
-     </div>
-     );
+    {/* {data.map((element) => (<Image key={element.id} id={element.id} image={element.img} position={position}
+    />))} */}
+        </Back>
+    
+  );
+    
 }
 
 export default App;
