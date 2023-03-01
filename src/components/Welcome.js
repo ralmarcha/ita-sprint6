@@ -4,17 +4,15 @@ import galaxia from '../img/galaxia.jpg';
 
  export const WelcomePage = styled.div`
     display: flex;
-  height: 100vh;
-  width: 100%;
-  flex-direction: column;
-  font-family: Arial;
-  align-items: center;
-  ${'' /* color: white; */}
-  background-size: cover;
-  background-position: center;
-  background-image: url("../img/galaxia.jpg");
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    font-family: Arial;
+    text-align: center;
+    align-items: center;
+    color: white;
+    background-color : #76b5c5;
   `;
-
 
 
 export const Welcome = ({ següent }) => {
