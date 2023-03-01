@@ -7,12 +7,9 @@ import { Button } from './components/Button';
 import { useState } from 'react';
 import { Welcome } from './components/Welcome';
 
-
-
 function App() {
   const [position, setPosition] = useState(1);
-  
-  
+    
   const previous = () => { 
     if (position <= data.length) {
       setPosition(position - 1);
@@ -36,24 +33,20 @@ function App() {
     setPage(false);
   };
 
-
   return welcomePage === true ? (
-    <Welcome següent={nextPage} />
+    <Welcome nextPage={nextPage}/>
   ) :  (
     <Back background={data[position-1].img}>
-      <div>
-      <Button onClick={previous}> Anterior </Button>
-      <Button onClick={next}> Següent </Button>
+      <div style={{marginTop: `50px`, marginLeft:`40px`}}>
+         <Button onClick={previous}> Anterior </Button>
+         <Button onClick={next}> Següent </Button>
       </div>
-    
-      {data.map((element) => (<Escena key={element.id} id={element.id} image={element.img} text={element.text} position={position}
-      />))}
-    {/* {data.map((element) => (<Image key={element.id} id={element.id} image={element.img} position={position}
-    />))} */}
-        </Back>
-    
-  );
-    
+      <div style={{marginTop: `30px`, marginLeft:`60px`}}>
+          {data.map((element) => (<Escena key={element.id} id={element.id} image={element.img} text={element.text} position={position}
+          />))}
+      </div>
+    </Back>
+  );   
 }
 
 export default App;
