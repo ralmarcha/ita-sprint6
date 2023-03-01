@@ -1,22 +1,40 @@
 import './App.css';
-import Escena from './components/Escena/Escena'
+import React from 'react';
+import Escena from './components/Escena/Escena';
+import { data } from './components/data';
+import { Button } from './components/Button';
+import { useState } from 'react';
 
 function App() {
-  const props = [
-    "El nostre heroi estava surant per l'espai sideral quan a la llunyania va albirar una nau espacial",
-    "Sentia curiositat per l'interior de la nau i es va posar a inspeccionar-la. Va arribar a una sala amb dues portes.",
-    "L'heroi va decidir travessar la porta que el portava a casa",
-    "Mentrestant, altres herois no van tenir tanta sort en la seva elecció ..."
-  ];
- const mostrar = () => props.map((element, index) => <p key={index}>{element}</p>);
+  const [position, setPosition] = useState(1);
+
+  const previous = () => { 
+    if (position <= data.length) {
+      setPosition(position - 1);
+    }
+    if (position === 1) {
+      setPosition(4);
+    }
+  }
+ 
+  const next = () => {
+    if (position < data.length) {
+      setPosition(position + 1);
+    }
+    if (position >= data.length) {
+        setPosition(1);
+    }
+  }
 
   return (
     <div>
-      <Escena param={mostrar()}/>
-    </div>
-  );
+      <Button onClick={previous}> Anterior </Button>
+      <Button onClick={next}> Següent </Button>
+      {data.map((element) => (<Escena  key={element.id} id={element.id} image={element.img} text={element.text} position={position}
+      />))}
+     </div>
+     );
 }
 
-
-
 export default App;
+
