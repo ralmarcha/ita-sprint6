@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import galaxia from '../img/galaxia.jpg';
+
 
  export const WelcomePage = styled.div`
     display: flex;
@@ -11,16 +11,28 @@ import galaxia from '../img/galaxia.jpg';
     text-align: center;
     align-items: center;
     color: white;
-    background-color : #76b5c5;
+    background-color : #85a3e0;
   `;
 
+export const Welcomebutton = styled.button`
+  padding: 10px;
+  width : 150px;
+  color : white;
+  border-radius : 20px;
+  border-color: white;
+  background-color:  #3366cc;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.75;
+   }
+`
 
 export const Welcome = ({ següent }) => {
   return (
     <WelcomePage>
       <h1 >Benvinguts i Benvingudes</h1>
       <h4>Apreta el botó començar la història</h4>
-     <button onClick={següent}>COMENÇAR</button>
+     <Welcomebutton onClick={següent}>COMENÇAR</Welcomebutton>
     </WelcomePage>
   );
 };
