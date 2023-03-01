@@ -5,6 +5,8 @@ import { Back} from './components/Background';
 import { data } from './components/data';
 import { Button } from './components/Button';
 import { useState } from 'react';
+import { Welcome } from './components/Welcome';
+
 
 
 function App() {
@@ -29,7 +31,15 @@ function App() {
     }
   } 
 
-  return (
+  const [welcomePage, setPage] = useState(true);
+  const nextPage = () => {
+    setPage(false);
+  };
+
+
+  return welcomePage === true ? (
+    <Welcome següent={nextPage} />
+  ) :  (
     <Back background={data[position-1].img}>
       <div>
       <Button onClick={previous}> Anterior </Button>
